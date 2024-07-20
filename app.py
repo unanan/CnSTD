@@ -16,22 +16,23 @@ def base64_to_pil(base64_str):
 
 @app.route('/ocr', methods=["POST"])
 def ocr_process():
-    image_b64 = request.json.get("image")
-    image_pil = base64_to_pil(image_b64)
-
-    box_infos = cn_std.detect(image_pil)
-
-    results = []
-    for box_info in box_infos['detected_texts']:
-        cropped_img = box_info['cropped_img']
-        ocr_res = cn_ocr.ocr_for_single_line(cropped_img)
-        print('ocr result: %s' % str(ocr_res))
-        results.append({
-            "box": box_info["box"],
-            "text": ocr_res["text"],
-            "score": ocr_res["score"]
-        })
-    return results
+    # image_b64 = request.json.get("image")
+    # image_pil = base64_to_pil(image_b64)
+    #
+    # box_infos = cn_std.detect(image_pil)
+    #
+    # results = []
+    # for box_info in box_infos['detected_texts']:
+    #     cropped_img = box_info['cropped_img']
+    #     ocr_res = cn_ocr.ocr_for_single_line(cropped_img)
+    #     print('ocr result: %s' % str(ocr_res))
+    #     results.append({
+    #         "box": box_info["box"],
+    #         "text": ocr_res["text"],
+    #         "score": ocr_res["score"]
+    #     })
+    # return results
+    return 
 
 
 if __name__ == '__main__':
