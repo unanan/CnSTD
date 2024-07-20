@@ -17,7 +17,7 @@ def base64_to_pil(base64_str):
 def box_jsonify(box):
     output_box = []
     for point in box:
-        output_box.append([point[0], point[1]])
+        output_box.append([float(point[0]), float(point[1])])
     return output_box
 
 
@@ -35,7 +35,7 @@ def ocr_process():
         results.append({
             "box": box_jsonify(box_info["box"]),
             "text": ocr_res["text"],
-            "score": ocr_res["score"]
+            "score": float(ocr_res["score"])
         })
     return jsonify(results)
 
