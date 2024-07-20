@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from cnstd import CnStd
 from cnocr import CnOcr
 import base64
@@ -31,7 +31,7 @@ def ocr_process():
             "text": ocr_res["text"],
             "score": ocr_res["score"]
         })
-    return results
+    return jsonify(results)
 
 
 if __name__ == '__main__':
