@@ -27,7 +27,7 @@ def ocr_process():
     image_pil = base64_to_pil(image_b64)
 
     box_infos = cn_std.detect(image_pil)
-
+    print(f"detect ok. length:{len(box_infos)}")
     results = []
     for box_info in box_infos['detected_texts']:
         cropped_img = box_info['cropped_img']
@@ -37,6 +37,7 @@ def ocr_process():
             "text": ocr_res["text"],
             "score": float(ocr_res["score"])
         })
+    print(f"ocr ok.")
     return jsonify(results)
 
 
