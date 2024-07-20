@@ -23,6 +23,7 @@ def box_jsonify(box):
 
 @app.route('/ocr', methods=["POST"])
 def ocr_process():
+    print("get one request")
     image_b64 = request.json.get("image")
     image_pil = base64_to_pil(image_b64)
 
@@ -45,4 +46,4 @@ if __name__ == '__main__':
     cn_std = CnStd()
     cn_ocr = CnOcr()
 
-    app.run(host="0.0.0.0", port=6006, debug=True)  
+    app.run(host="0.0.0.0", port=6006, debug=True)
