@@ -14,6 +14,13 @@ def base64_to_pil(base64_str):
     return image
 
 
+def box_jsonify(box):
+    output_box = []
+    for point in box:
+        output_box.append([point[0], point[1]])
+    return output_box
+
+
 @app.route('/ocr', methods=["POST"])
 def ocr_process():
     image_b64 = request.json.get("image")
@@ -25,9 +32,8 @@ def ocr_process():
     for box_info in box_infos['detected_texts']:
         cropped_img = box_info['cropped_img']
         ocr_res = cn_ocr.ocr_for_single_line(cropped_img)
-        print('ocr result: %s' % str(ocr_res))
         results.append({
-            "box": box_info["box"],
+            "box": box_jsonify(box_info["box"]),
             "text": ocr_res["text"],
             "score": ocr_res["score"]
         })
