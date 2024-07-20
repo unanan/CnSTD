@@ -44,4 +44,4 @@ if __name__ == '__main__':
     cn_std = CnStd()
     cn_ocr = CnOcr()
 
-    app.run(host="0.0.0.0", port=6006)
+    app.run(host="0.0.0.0", port=8204)  # 临时占用
