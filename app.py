@@ -32,7 +32,8 @@ def ocr_process():
     #         "score": ocr_res["score"]
     #     })
     # return results
-    return 
+    print(request.json)
+    return "success"
 
 
 if __name__ == '__main__':
